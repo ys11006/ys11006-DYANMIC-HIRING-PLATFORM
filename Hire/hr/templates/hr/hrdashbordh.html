@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Poster Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  
+  <style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 0;
+        animation: fadeIn 1s ease-in-out;
+    }
+    
+    .container {
+        width: 80%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        animation: slideIn 1s ease-in-out;
+    }
+    
+    h2 {
+        color: #333;
+        margin-bottom: 20px;
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 700;
+        animation: fadeIn 2s ease-in-out;
+    }
+    
+    /* Navbar Styles */
+    .navbar {
+        background-color: #333;
+        padding: 15px;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        animation: fadeIn 1.5s ease-in-out;
+    }
+    
+    .navbar a {
+        color: white;
+        text-decoration: none;
+        padding: 0 20px;
+        font-weight: 600;
+        transition: color 0.3s, transform 0.3s;
+    }
+    
+    .navbar a:hover {
+        color: #1abc9c;
+        transform: translateY(-2px);
+    }
+    
+    /* Table Styles */
+    .candidates-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 40px;
+        animation: fadeIn 2s ease-in-out;
+    }
+    
+    .candidates-table thead {
+        background-color: #4CAF50;
+        color: white;
+        font-weight: bold;
+    }
+    
+    .candidates-table th, .candidates-table td {
+        padding: 15px;
+        text-align: left;
+        border: 2px solid #ddd;
+    }
+    
+    .candidates-table tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+    
+    .candidates-table tbody tr:hover {
+        background-color: #f1f1f1;
+        animation: hoverEffect 0.5s ease-in-out;
+    }
+    
+    /* Button Styles */
+    .accept-button, .reject-button, .profile-button, .resume-download {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 16px;
+        border: none;
+        border-radius: 6px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s;
+        font-weight: bold;
+        font-size: 1rem;
+    }
+    
+    .accept-button:hover, .profile-button:hover, .resume-download:hover {
+        background-color: #45a049;
+        transform: scale(1.05);
+    }
+    
+    .reject-button {
+        background-color: #f44336;
+    }
+    
+    .reject-button:hover {
+        background-color: #e53935;
+        transform: scale(1.05);
+    }
+    
+    /* Job Post Styles */
+    .job-post {
+        background: #ffffff;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: border-color 0.3s, box-shadow 0.3s;
+        animation: fadeIn 1.5s ease-in-out;
+    }
+    
+    .job-post:hover {
+        border-color: #4CAF50;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Form Styles */
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="date"],
+    input[type="number"] {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        font-size: 14px;
+        transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="date"]:focus,
+    input[type="number"]:focus {
+        border-color: #4CAF50;
+        box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+        outline: none;
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    
+    @keyframes slideIn {
+        from {
+            transform: translateY(20px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes hoverEffect {
+        from {
+            transform: scale(1);
+        }
+        to {
+            transform: scale(1.02);
+        }
+    }
+    
+    /* Responsive Design */
+    @media screen and (max-width: 768px) {
+        .candidates-table, .candidates-table thead, .candidates-table tbody, .candidates-table th, .candidates-table td, .candidates-table tr {
+            display: block;
+        }
+    
+        .candidates-table thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+    
+        .candidates-table tr {
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            animation: fadeIn 2s ease-in-out;
+        }
+    
+        .candidates-table td {
+            border: none;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 50%;
+            text-align: right;
+        }
+    
+        .candidates-table td:before {
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            width: 45%;
+            padding-right: 10px;
+            white-space: nowrap;
+            font-weight: bold;
+        }
+    
+        .candidates-table td:nth-of-type(1):before { content: "Name"; }
+        .candidates-table td:nth-of-type(2):before { content: "Email"; }
+        .candidates-table td:nth-of-type(3):before { content: "Passing Year"; }
+        .candidates-table td:nth-of-type(4):before { content: "Years of Experience"; }
+        .candidates-table td:nth-of-type(5):before { content: "Resume"; }
+        .candidates-table td:nth-of-type(6):before { content: "Status"; }
+        .candidates-table td:nth-of-type(7):before { content: "Action"; }
+        .candidates-table td:nth-of-type(8):before { content: "Profile"; }
+    }
+    
+    
+    
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    {% include "hr/navbar.html" %}
+
+    <div class="content">
+      <h2>Welcome to Your Dashboard</h2>
+
+
+
+      <div class="job-cards">
+
+        {% for job in jobposts %}
+        <div class="job-card">
+          <h3>{{job.title}}</h3>
+          <p>Posted on: {{job.lastDateToApply}}</p>
+          <div class="apply-count">
+            <i class="fas fa-users"></i>
+            <span>{{job.applyCount}} Candidates Applied</span>
+          </div>
+          <button class="details-button"><a href="{% url 'candidatedetails' job.id %}" style="text-decoration: none; color: inherit;">See Details</a></button>
+        </div>
+        {% endfor %}
+
+      </div>
+      
+    </div>
+  </div>
+</body>
+
+</html>

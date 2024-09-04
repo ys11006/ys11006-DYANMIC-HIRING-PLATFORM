@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apply for Job</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+   
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f9;
+      display: flex;
+      min-height: 100vh;
+      animation: fadeIn 1s ease-in-out;
+    }
+    
+    .container {
+      display: flex;
+      flex-direction: row;
+    }
+    
+    .sidebar {
+      background-color: #2c3e50; /* Darker, richer color */
+      color: #ecf0f1; /* Lighter text color for contrast */
+      width: 250px; /* Slightly wider */
+      padding: 20px;
+      border-right: 2px solid #3498db; /* Subtle accent border */
+      border-radius: 8px; /* Rounded corners */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+      transition: background-color 0.3s, border-right 0.3s; /* Smooth transitions */
+      animation: slideInLeft 1s ease-out;
+    }
+    
+    .sidebar:hover {
+      background-color: #34495e; /* Slightly lighter on hover */
+      border-right: 2px solid #1abc9c; /* Change border color on hover */
+    }
+    
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .sidebar a {
+      display: flex;
+      align-items: center;
+      color: #ecf0f1;
+      text-decoration: none;
+      padding: 10px 15px;
+      border-radius: 6px; /* Rounded corners for links */
+      transition: background-color 0.3s, transform 0.3s;
+      font-weight: 500;
+    }
+    
+    .sidebar a:hover {
+      background-color: #16a085; /* Highlight color on hover */
+      transform: translateX(5px); /* Slight shift effect */
+    }
+    
+    .sidebar i {
+      margin-right: 10px;
+    }
+    
+    .content {
+      flex: 1;
+      padding: 20px;
+      margin-left: 1rem; /* Adjusted margin */
+      width: calc(100% - 250px); /* Adjust width according to sidebar width */
+    }
+    
+    .apply-form {
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+      padding: 100px;
+      animation: fadeInUp 1s ease-in-out;
+    }
+    
+    .apply-form h2 {
+      margin-bottom: 20px;
+      color: #333;
+      font-size: 24px;
+      text-align: center;
+    }
+    
+    .apply-form form {
+      display: grid;
+      grid-gap: 20px;
+    }
+    
+    .apply-form label {
+      font-weight: bold;
+      color: #333;
+    }
+    
+    .apply-form input,
+    .apply-form textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid ;
+      border-radius: 8px;
+      font-size: 16px; /* Larger text for better readability */
+      transition: border-color 0.3s;
+    }
+    
+    .apply-form input:focus,
+    .apply-form textarea:focus {
+      border-color: #3498db; /* Blue border on focus */
+      outline: none;
+    }
+    
+    .apply-form button {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background-color: #3498db;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 16px;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    
+    .apply-form button:hover {
+      background-color: #2980b9;
+      transform: scale(1.05); /* Slight scale effect on hover */
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    
+
+  </style>
+</head>
+<body>
+  <div class="container">
+     {% include 'candidate/navbar.html' %}
+    <div class="content">
+      <div class="apply-form">
+        <h2>Apply for Job</h2>
+        <form method="post">
+          {% csrf_token %}
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required>
+          
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+          
+          <label for="college">College Name:</label>
+          <input type="text" id="college" name="college" required>
+          
+          <label for="passing-year">Passing Year:</label>
+          <input type="text" id="passing-year" name="passing_year" required>
+
+          <label for="passing-year">Year Experience:</label>
+          <input type="text" id="passing-year" name="yearOfExperience" required>
+          
+          <label for="resume">Resume:</label>
+          <input type="file" id="resume" name="resume" name="resume" accept=".pdf,.doc,.docx" required>
+          
+          <label for="about">Tell us about yourself:</label>
+          <textarea id="about" name="about" rows="4" required></textarea>
+          
+          <button type="submit" class="apply-button">Apply</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
